@@ -1,4 +1,5 @@
 import { typeOf } from './index'
+import { __RETAIN__ } from '../config'
 import dayjs from 'dayjs'
 
 /**
@@ -15,7 +16,7 @@ export function getNowTime() {
 export function timeFixed(obj) {
   for (let i in obj) {
     if (typeOf(obj[i]) === 'Number') {
-      obj[i] = (obj[i] / 1000).toFixed(3)
+      obj[i] = (obj[i] / 1000).toFixed(__RETAIN__)
     }
   }
   return obj

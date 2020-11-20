@@ -44,3 +44,9 @@ export const pre = {
  * 当页面关闭时，未上报的日志会以 __STORAGE_KEY__ 存储，以待下次访问时即刻上报
  */
 export const __STORAGE_KEY__ = '@logger-chunk'
+
+/**
+ * 上报保留位数
+ * 默认为小数点后 3 位
+ */
+export const __RETAIN__ = 3
