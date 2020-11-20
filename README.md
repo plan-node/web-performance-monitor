@@ -161,15 +161,15 @@ export function send(logstore, msg, pre = '') {
 
 |key|说明|
 |:-:|:-:|
-|`user_agent_ua`|user-agent|
-|`user_agent_browser_name`|浏览器名|
-|`user_agent_browser_major`|浏览器主版本|
-|`user_agent_browser_version`|浏览器版本|
-|`user_agent_cpu_architecture`|系统 cpu 架构|
-|`user_agent_engine_name`|浏览器渲染引擎|
-|`user_agent_engine_version`|浏览器渲染引擎版本|
-|`user_agent_os_name`|用户操作系统|
-|`user_agent_os_version`|用户操作系统版本|
+|`UA_ua`|user-agent|
+|`UA_browser_name`|浏览器名|
+|`UA_browser_major`|浏览器主版本|
+|`UA_browser_version`|浏览器版本|
+|`UA_cpu_architecture`|系统 cpu 架构|
+|`UA_engine_name`|浏览器渲染引擎|
+|`UA_engine_version`|浏览器渲染引擎版本|
+|`UA_os_name`|用户操作系统|
+|`UA_os_version`|用户操作系统版本|
 
 ### Common
 
