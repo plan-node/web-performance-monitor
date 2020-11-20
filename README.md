@@ -160,7 +160,7 @@ export function send(logstore, msg, pre = '') {
 ### User-Agent
 
 |key|说明|
-|:-:|:--|
+|:-:|:-:|
 |`user_agent_ua`|user-agent|
 |`user_agent_browser_name`|浏览器名|
 |`user_agent_browser_major`|浏览器主版本|
@@ -174,7 +174,7 @@ export function send(logstore, msg, pre = '') {
 ### Common
 
 |key|说明|
-|:-:|:--|
+|:-:|:-:|
 |`title`|网页标题|
 |`url`|当前网址|
 |`timestamp`|上报时的时间戳|
@@ -187,7 +187,7 @@ export function send(logstore, msg, pre = '') {
 #### JavaScript
 
 |key|说明|
-|:-:|:--|
+|:-:|:-:|
 |`type`|上报类型 `error` |
 |`subType`|上报子类型 `js_error`|
 |`message`|错误信息|
@@ -198,7 +198,7 @@ export function send(logstore, msg, pre = '') {
 #### Resource
 
 |key|说明|
-|:-:|:--|
+|:-:|:-:|
 |`type`|上报类型 `error` |
 |`subType`|上报子类型 `resource_error`|
 |`tagName`|错误节点标签名|
@@ -207,7 +207,7 @@ export function send(logstore, msg, pre = '') {
 #### Promise
 
 |key|说明|
-|:-:|:--|
+|:-:|:-:|
 |`type`|上报类型 `error` |
 |`subType`|上报子类型 `promise_error`|
 |`message`|错误信息|
@@ -220,7 +220,7 @@ export function send(logstore, msg, pre = '') {
 #### Base
 
 |key|说明|
-|:-:|:--|
+|:-:|:-:|
 |`type`|上报类型 `performance` |
 |`subType`|上报子类型 `base`|
 |`connect`|连接时间|
@@ -242,7 +242,7 @@ export function send(logstore, msg, pre = '') {
 ##### Core
 
 |key|说明|
-|:-:|:--|
+|:-:|:-:|
 |`type`|上报类型 `performance` |
 |`subType`|上报子类型 `paint_core`|
 |`FCP_duration`|首次内容绘制时间延迟|
@@ -254,7 +254,7 @@ export function send(logstore, msg, pre = '') {
 ##### FID
 
 |key|说明|
-|:-:|:--|
+|:-:|:-:|
 |`type`|上报类型 `performance` |
 |`subType`|上报子类型 `paint_fid`|
 |`FID_duration`|首次交互处理耗时|
@@ -266,7 +266,7 @@ export function send(logstore, msg, pre = '') {
 #### Resource
 
 |key|说明|
-|:-:|:--|
+|:-:|:-:|
 |`type`|上报类型 `performance` |
 |`subType`|上报子类型 `resource`|
 |`res_type_n_name`|`type` 类型的第 `n` 个资源名称|
