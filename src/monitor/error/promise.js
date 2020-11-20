@@ -41,7 +41,7 @@ export default () => {
         stores.promise,
         {
           type: 'error',
-          errorType: 'promise_error',
+          subType: 'promise_error',
           message,
           stack,
           filename,

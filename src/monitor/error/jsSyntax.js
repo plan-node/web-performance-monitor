@@ -27,7 +27,7 @@ export default () => {
         stores.jsSyntax,
         {
           type: 'error',
-          errorType: 'js_error',
+          subType: 'js_error',
           message,
           stack,
           filename,

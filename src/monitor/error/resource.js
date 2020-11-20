@@ -20,7 +20,7 @@ export default () => {
           stores.resource,
           {
             type: 'error',
-            errorType: 'resource_error',
+            subType: 'resource_error',
             filename,
             tagName,
             selector
