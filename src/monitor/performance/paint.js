@@ -1,5 +1,5 @@
 import { send } from '../../sender/send'
-import { single, getPathSelect } from '../../utils'
+import { single, getPathSelect, delay } from '../../utils'
 import { timeFixed } from '../../utils/time'
 import { stores, pre } from '../../config'
 
@@ -26,8 +26,8 @@ export function recordPaint() {
       FMP = perfEntries[0]
 
       FMP = {
-        duration: FMP?.duration || '',
-        startTime: FMP?.startTime || ''
+        duration: FMP?.duration ?? '',
+        startTime: FMP?.startTime ?? ''
       }
 
       observer.disconnect()
@@ -39,9 +39,9 @@ export function recordPaint() {
       LCP = perfEntries[0]
 
       LCP = {
-        duration: LCP?.duration || '',
-        startTime: LCP?.startTime || '',
-        renderTime: LCP.renderTime || ''
+        duration: LCP?.duration ?? '',
+        startTime: LCP?.startTime ?? '',
+        renderTime: LCP.renderTime ?? ''
       }
 
       observer.disconnect()
@@ -49,37 +49,60 @@ export function recordPaint() {
   }
 
   /**
+   * 发送 FP 与 FCP
+   */
+  function sendFPAndFCP() {
+    send(
+      stores.performance,
+      timeFixed({
+        type: 'performance',
+        subType: 'paint_core',
+        ...single('FP', window._FP),
+        ...single('FCP', window._FCP),
+        ...single('FMP', FMP),
+        ...single('LCP', LCP)
+      }),
+      pre.performance
+    )
+  }
+
+  /**
    * FP ( First Paint ) -> 首次绘制
    * @description 将第一个像素点绘制到屏幕的时刻
    */
-  let FP = performance.getEntriesByName('first-paint')[0]
-  FP = {
-    duration: FP?.duration || '',
-    startTime: FP?.startTime || ''
-  }
+  const FPvalue = "performance.getEntriesByName('first-paint')[0]"
+  delay(FPvalue, (value) => {
+    window._FP = {
+      duration: value?.duration ?? '',
+      startTime: value?.startTime ?? ''
+    }
+    if (window._delaySend) {
+      return
+    }
+    if (window._FCP) {
+      sendFPAndFCP()
+      window._delaySend = true
+    }
+  })
 
   /**
    * FCP ( First Content Paint ) -> 首次内容绘制
    * @description 浏览器将第一个DOM渲染到屏幕的时间
    */
-  let FCP = performance.getEntriesByName('first-contentful-paint')[0]
-  FCP = {
-    duration: FCP?.duration || '',
-    startTime: FCP?.startTime || ''
-  }
-
-  send(
-    stores.performance,
-    timeFixed({
-      type: 'performance',
-      subType: 'paint_core',
-      ...single('FP', FP),
-      ...single('FCP', FCP),
-      ...single('FMP', FMP),
-      ...single('LCP', LCP)
-    }),
-    pre.performance
-  )
+  const FCPvalue = "performance.getEntriesByName('first-contentful-paint')[0]"
+  delay(FCPvalue, (value) => {
+    window._FCP = {
+      duration: value?.duration ?? '',
+      startTime: value?.startTime ?? ''
+    }
+    if (window._delaySend) {
+      return
+    }
+    if (window._FP) {
+      sendFPAndFCP()
+      window._delaySend = true
+    }
+  })
 
   /**
    * FID ( First Input Delay ) -> 首次交互延迟

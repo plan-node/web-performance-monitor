@@ -59,7 +59,7 @@ export function recordBase() {
   let load = loadEventStart - fetchStart
 
   // 白屏时间
-  let whiteScreen = window._whiteScreen || ''
+  let whiteScreen = window._whiteScreen ?? ''
 
   send(
     stores.performance,

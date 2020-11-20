@@ -1,3 +1,5 @@
+import { __DELAY_MAX__ } from '../config'
+
 /**
  * 无限扁平化对象至一层结构，前缀会自动叠加
  * @param {String} pre 前缀
@@ -77,4 +79,31 @@ export function getPathSelect(path) {
     })
   }
   return select.reverse().join(' ')
+}
+
+/**
+ * 轮询取值
+ * @param {String} value 最终取值
+ * @param {Function} callback
+ */
+export function delay(value, callback) {
+  let count = 0
+  let timer = null
+
+  const polling = () => {
+    const v = eval(value)
+    if (!v) {
+      count++
+      if (count >= __DELAY_MAX__) {
+        clearInterval(timer)
+        timer = null
+      }
+      return
+    }
+    clearInterval(timer)
+    timer = null
+    callback(v)
+  }
+
+  timer = setInterval(polling, 100)
 }

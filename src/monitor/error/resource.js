@@ -8,9 +8,9 @@ export default () => {
     function (e) {
       // 只处理非 window 事件
       if (e.target !== window && (e.target.src || e.target.href)) {
-        let filename = e.target.src || e.target.href || ''
+        let filename = (e.target.src || e.target.href) ?? ''
 
-        let tagName = e.target.tagName?.toLocaleLowerCase() || ''
+        let tagName = e.target.tagName?.toLocaleLowerCase() ?? ''
 
         let selector = window._lastEvent
           ? getPathSelect(window._lastEvent.path)

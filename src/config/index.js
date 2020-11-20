@@ -50,3 +50,8 @@ export const __STORAGE_KEY__ = '@logger-chunk'
  * 默认为小数点后 3 位
  */
 export const __RETAIN__ = 3
+
+/**
+ * 获取 FP FCP 指标的轮询次数
+ */
+export const __DELAY_MAX__ = 20

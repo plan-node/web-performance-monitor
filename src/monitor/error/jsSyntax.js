@@ -11,11 +11,11 @@ export default () => {
         return
       }
 
-      let message = e.message || ''
+      let message = e.message ?? ''
 
       let stack = getStackMessage(e.error?.stack)
 
-      let filename = e.filename || ''
+      let filename = e.filename ?? ''
 
       let position = e.lineno && e.colno && `${e.lineno}:${e.colno}`
 

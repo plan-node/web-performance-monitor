@@ -19,7 +19,7 @@ export function recordResource() {
     }
     const info = {
       name: item.name,
-      ...timeFixed({ duration: item?.duration || '' }),
+      ...timeFixed({ duration: item?.duration ?? '' }),
       size: item.transferSize,
       protocol: item.nextHopProtocol
     }
