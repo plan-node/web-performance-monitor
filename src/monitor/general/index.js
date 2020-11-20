@@ -15,6 +15,6 @@ export function generalInfo() {
     url: location.href,
     timestamp: Date.now(),
     date: getNowTime(),
-    ...single('user_agent', result)
+    ...single('UA', result)
   }
 }
