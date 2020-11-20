@@ -155,3 +155,135 @@ export function send(logstore, msg, pre = '') {
 
 如果需要满足更复杂的场景，可以继续实现 `./src/sender/index.js` 中派发日志实例的出口。
 
+## 上报一览
+
+### User-Agent
+
+|key|说明|
+|:-:|:--|
+|`user_agent_ua`|user-agent|
+|`user_agent_browser_name`|浏览器名|
+|`user_agent_browser_major`|浏览器主版本|
+|`user_agent_browser_version`|浏览器版本|
+|`user_agent_cpu_architecture`|系统 cpu 架构|
+|`user_agent_engine_name`|浏览器渲染引擎|
+|`user_agent_engine_version`|浏览器渲染引擎版本|
+|`user_agent_os_name`|用户操作系统|
+|`user_agent_os_version`|用户操作系统版本|
+
+### Common
+
+|key|说明|
+|:-:|:--|
+|`title`|网页标题|
+|`url`|当前网址|
+|`timestamp`|上报时的时间戳|
+|`date`|上报时的格式化时间|
+|`type`|上报类型 `error` / `performance` |
+|`subType`|上报子类型|
+
+### Error
+
+#### JavaScript
+
+|key|说明|
+|:-:|:--|
+|`type`|上报类型 `error` |
+|`subType`|上报子类型 `js_error`|
+|`message`|错误信息|
+|`position`|错误位置|
+|`stack`|栈信息|
+|`selector`|错误元素选择器|
+
+#### Resource
+
+|key|说明|
+|:-:|:--|
+|`type`|上报类型 `error` |
+|`subType`|上报子类型 `resource_error`|
+|`tagName`|错误节点标签名|
+|`selector`|错误元素选择器|
+
+#### Promise
+
+|key|说明|
+|:-:|:--|
+|`type`|上报类型 `error` |
+|`subType`|上报子类型 `promise_error`|
+|`message`|错误信息|
+|`position`|错误位置|
+|`stack`|栈信息|
+|`selector`|错误元素选择器|
+
+### Performance
+
+#### Base
+
+|key|说明|
+|:-:|:--|
+|`type`|上报类型 `performance` |
+|`subType`|上报子类型 `base`|
+|`connect`|连接时间|
+|`domContentLoaded`|脚本执行时间|
+|`domRender`|Dom 渲染耗时|
+|`interactive`|首次可交互时间|
+|`load`|完整加载时间|
+|`parseDOM`|Dom 解析时间|
+|`redirect`|重定向耗时|
+|`request`|请求耗时|
+|`response`|响应读取时间|
+|`ttfb`|获取首字节时间|
+|`unload`|上次页面卸载耗时|
+|`whiteScreen`|白屏时间|
+
+
+#### Paint
+
+##### Core
+
+|key|说明|
+|:-:|:--|
+|`type`|上报类型 `performance` |
+|`subType`|上报子类型 `paint_core`|
+|`FCP_duration`|首次内容绘制时间延迟|
+|`FCP_startTime`|首次内容绘制开始时间|
+|`FP_duration`|首次绘制时间延迟|
+|`FP_startTime`|首次绘制开始时间|
+
+
+##### FID
+
+|key|说明|
+|:-:|:--|
+|`type`|上报类型 `performance` |
+|`subType`|上报子类型 `paint_fid`|
+|`FID_duration`|首次交互处理耗时|
+|`FID_inputDelay`|首次交互处理延迟|
+|`FID_selector`|首次交互元素选择器|
+|`FID_startTime`|首次交互时间|
+
+
+#### Resource
+
+|key|说明|
+|:-:|:--|
+|`type`|上报类型 `performance` |
+|`subType`|上报子类型 `resource`|
+|`res_type_n_name`|`type` 类型的第 `n` 个资源名称|
+|`res_type_n_duration`|`type` 类型的第 `n` 个资源加载耗时|
+|`res_type_n_protocol`|`type` 类型的第 `n` 个资源所用协议|
+|`res_type_n_size`|`type` 类型的第 `n` 个资源大小|
+
+## 其他
+
+### 上报单位
+
+默认统一采用 `s` 为单位，保留 `3` 位小数，你可以在 `./src/config/index.js` 修改：
+
+```js
+  /**
+   * 上报保留位数
+   * 默认为小数点后 3 位
+   */
+  export const __RETAIN__ = 3
+```
