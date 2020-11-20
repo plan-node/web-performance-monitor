@@ -1,6 +1,6 @@
 {
   "name": "web-performance-monitor",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "dist/web-monitor.cjs.js",
   "browser": "dist/web-monitor.js",
   "module": "dist/web-monitor.esm.js",
