@@ -100,10 +100,10 @@
 最后在网站链入 `./dist/web-monitor.min.js` 即可开启上报：
 
 ```html
-<head>
+<body>
   <!-- ... -->
   <script src="/dist/web-monitor.min.js"></script>
-</head>
+</body>
 ```
 
 ## 开发
